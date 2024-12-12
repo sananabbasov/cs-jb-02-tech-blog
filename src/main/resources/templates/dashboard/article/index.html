@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{dashboard/layout}"
+        lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 <body>
-
+<div layout:fragment="content">
+    <table class="table table-striped">
+        <a href="/dashboard/article/create" class="btn btn-outline-success my-2">Create</a>
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Photo</th>
+            <th scope="col">View</th>
+            <th scope="col">Created date</th>
+            <th scope="col">Updated date</th>
+            <th scope="col">Category</th>
+            <th scope="col">Tags</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="article : ${articles}">
+            <th th:text="${article.id}" scope="row">1</th>
+            <td th:text="${article.title}">Mark</td>
+            <td>
+                <img th:src="${article.photoUrl}" width="60" height="60">
+            </td>
+            <td th:text="${article.view}">Otto</td>
+            <td th:text="${#dates.format(article.createdDate,'dd-MM-yyyy')}">@mdo</td>
+            <td th:text="${#dates.format(article.updatedDate,'dd-MM-yyyy')}">Mark</td>
+            <td th:text="${article.category.name}">Otto</td>
+            <td>
+                <span class="badge badge-pill badge-primary" th:each="tag : ${article.tags}" th:text="${tag.name}"></span>
+            </td>
+            <td>
+                <a th:href="'/dashboard/article/update/'+${article.id}" class="btn btn-warning">Update</a>
+                <a href="" class="btn btn-danger">Remove</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

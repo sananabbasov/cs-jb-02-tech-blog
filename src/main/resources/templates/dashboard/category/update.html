@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{dashboard/layout}"
+        lang="en">
+
+<head>
+<body>
+<div layout:fragment="content">
+    <div class="container">
+        <form class="row" method="post" enctype="multipart/form-data">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <input th:value="${category.name}" name="name" class="form-control" placeholder="Title" />
+                </div>
+            </div>
+            <input type="submit" class="btn btn-warning" value="Update">
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

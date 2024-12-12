@@ -1,11 +1,11 @@
 package az.codenext.blog.dtos.category;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class CategoryDto {
     private Long id;
     private String name;

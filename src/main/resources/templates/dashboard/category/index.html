@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{dashboard/layout}"
+        lang="en">
+<head>
+<body>
+<div layout:fragment="content">
+    <table class="table table-striped">
+        <a href="/dashboard/category/create" class="btn btn-outline-success my-2">Create</a>
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category : ${categories}">
+            <th th:text="${category.id}" scope="row">1</th>
+            <td th:text="${category.name}">Mark</td>
+            <td>
+                <a th:href="'/dashboard/category/update/'+${category.id}" class="btn btn-warning">Update</a>
+                <a href="" class="btn btn-danger">Remove</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

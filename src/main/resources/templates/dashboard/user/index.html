@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{dashboard/layout}"
+        lang="en">
+<head>
+<body>
+<div layout:fragment="content">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th></th>
+          </tr>
+          </tfoot>
+          <tbody>
+          <tr th:each="user : ${users}">
+            <td th:text="${user.name}">Tiger Nixon</td>
+            <td th:text="${user.surname}">System Architect</td>
+            <td th:text="${user.email}">Edinburgh</td>
+            <td>
+              <span class="badge badge-success" th:each="role : ${user.roles}" th:text="${role.name}"></span>
+            </td>
+            <td>
+              <a th:href="'/dashboard/user/update/'+${user.id}" class="btn btn-warning">Update</a>
+              <a href="" class="btn btn-danger">Block</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

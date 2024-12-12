@@ -11,7 +11,7 @@ public class DashboardController {
     @PreAuthorize("hasAnyAuthority('admin','moderator')")
     public String index(){
 
-        return "dashboard/index";
+        return "/dashboard/index";
     }
 
 }
